@@ -9,7 +9,7 @@ export function TrustBar() {
           <div key={stat.value} className="flex items-center gap-2.5">
             <span
               className="num-display text-[28px]"
-              style={{ color: stat.accent ? 'var(--mint)' : 'var(--coral)' }}
+              style={{ color: 'accent' in stat && stat.accent ? 'var(--mint)' : 'var(--coral)' }}
             >
               {stat.value}
             </span>
