@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties ─────────────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --coral:         #C8574A;
+  --coral-dark:    #B34A3D;
+  --coral-mid:     #E09088;
+  --coral-pale:    #FBF0EE;
+  --mint:          #4D9E99;
+  --mint-dark:     #3A8783;
+  --mint-mid:      #8ECAC6;
+  --mint-pale:     #EAF4F3;
+  --navy:          #1B1F32;
+  --navy-soft:     #2E3352;
+  --off-white:     #F7F4EF;
+  --warm-gray:     #EAE7E1;
+  --border:        #DDD9D1;
+  --text-primary:  #1B1F32;
+  --text-secondary:#6B6861;
+  --text-muted:    #A09D97;
+
+  /* Font stacks (set by next/font CSS vars in layout) */
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-mono:    var(--font-jetbrains), 'Courier New', monospace;
+  --font-body:    var(--font-dm-sans), system-ui, sans-serif;
+}
+
+/* ── Base Resets ────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--off-white);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Custom Utilities ───────────────────────────────────────────────── */
+@layer utilities {
+  /* Section label — mono uppercase small caps */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Display headings via Cormorant */
+  .heading-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+
+  /* Cormorant numbers — used for 5%, $0, etc. */
+  .num-display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+  }
+
+  /* Data codes — used for ISRC, UPC values */
+  .code-mono {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* Fade-up scroll animation */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up.delay-1 { transition-delay: 0.1s; }
+  .fade-up.delay-2 { transition-delay: 0.2s; }
+  .fade-up.delay-3 { transition-delay: 0.3s; }
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
